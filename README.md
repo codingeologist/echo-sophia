@@ -45,8 +45,14 @@ s format=duration -of csv=p=0 "$f"; done
 
 - extract notes: `python3 main.py -e [FILENAME]`
 
+## Development tasks
+
+[TODO](TODO.md)
+
 ## References
 
 - MistralAI Le Chat was used as an assistant to lookup API and SDK usage in the docs and help guide the programming when encountering an error.
+
+- The hero image/logo was generated using MistralAI's LeChat.
 
 - The `extract_wisdom` prompt was modified from the original in danielmiessler's `Fabric`, an open-source framework for augmenting humans using AI.
