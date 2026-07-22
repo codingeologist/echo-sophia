@@ -31,6 +31,20 @@ for f in chunks/<DATE>/<ROOM>/europython_2026_<ROOM>_<DATE>_chunk_*.wav; do echo
 s format=duration -of csv=p=0 "$f"; done
 ```
 
+## Setup
+
+- Create a virtual environment: `uv venv venv`
+
+- Install dependencies: `uv pip install -r requirements.txt`
+
+- Use `args` to run commands:
+
+- download audio from a YouTube video: `python3 main.py -d [YOUTUBE-URL]`
+
+- transcribe audio: `python3 main.py -t [FILENAME]`
+
+- extract notes: `python3 main.py -e [FILENAME]`
+
 ## References
 
 - MistralAI Le Chat was used as an assistant to lookup API and SDK usage in the docs and help guide the programming when encountering an error.
