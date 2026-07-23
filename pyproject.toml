@@ -1,17 +1,28 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
 [project]
 
 name = "EchoSophia"
 version = "2026.0.0"
 dependencies = [
-	yt-dlp==2026.7.4
-	mistralai==2.7.0
+    "yt-dlp>=2026.7.4",
+    "mistralai>=2.7.0",
+    "typer>=0.9.0",
 ]
 requires-python = ">3.11"
 authors = [
-	name = "codingeologist", email = "coding.geologist@gmail.com"
+    { name = "codingeologist", email = "coding.geologist@gmail.com" }
 ]
 maintainers = [
-	name = "codingeologist", email = "coding.geologist@gmail.com"
+    { name = "codingeologist", email = "coding.geologist@gmail.com" }
 ]
 description = "From speech to wisdom"
 readme = "README.md"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project.scripts]
+echosophia = "EchoSophia.cli:app"

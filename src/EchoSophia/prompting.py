@@ -22,5 +22,5 @@ class PromptEng:
 
         with open("docs/extract_wisdom.md", "r", encoding="utf-8") as file:
             prompt = file.read()
-        
+
         return prompt + full_text

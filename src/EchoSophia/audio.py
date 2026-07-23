@@ -1,4 +1,5 @@
 """This module downloads and processes youtube audio data"""
+import sys
 import yt_dlp
 
 
@@ -18,6 +19,7 @@ class Audio:
         try:
             with yt_dlp.YoutubeDL(ydl_options) as ydl:
                 ydl.download([url])
-                print("downloaded audio successfully...")
+                sys.stdout.write("downloaded audio successfully...\n")
         except Exception as ex:
-            print(f"error downloading audio from {url}: {ex}")
+            err = f"error downloading audio from {url}: {ex}\n"
+            raise ConnectionError(err)
