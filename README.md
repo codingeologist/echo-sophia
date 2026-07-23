@@ -8,6 +8,35 @@
 
 ---
 
+## Installation
+
+```bash
+uv venv venv
+source venv/bin/activate
+uv pip install -e .
+```
+
+## Usage
+
+- Download audio from YouTube URL
+
+```bash
+echosophia download <"YOUTUBE_URL">
+```
+
+- Transcribe audio *.wav file
+
+```bash
+echosophia transcribe <"AUDIO_FILE"> # --output transcribed.json
+echosophia transcribe <"chunks/"> --chunk # transcribe split chunks of a larger audio file
+```
+
+- extract "wisdom" summary from transcripts
+
+```bash
+echosophia extract <"TRANSCRIPT.json"> <"OUTPUT.md">
+```
+
 ## Convert to WAV
 
 ```bash
@@ -30,20 +59,6 @@ ffmpeg -i "<FILENAME>.wav" \
 for f in chunks/<DATE>/<ROOM>/europython_2026_<ROOM>_<DATE>_chunk_*.wav; do echo -n "$f: "; ffprobe -v error -show_entrie
 s format=duration -of csv=p=0 "$f"; done
 ```
-
-## Setup
-
-- Create a virtual environment: `uv venv venv`
-
-- Install dependencies: `uv pip install -r requirements.txt`
-
-- Use `args` to run commands:
-
-- download audio from a YouTube video: `python3 main.py -d [YOUTUBE-URL]`
-
-- transcribe audio: `python3 main.py -t [FILENAME]`
-
-- extract notes: `python3 main.py -e [FILENAME]`
 
 ## Development tasks
 
