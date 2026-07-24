@@ -42,6 +42,7 @@ class LeChat:
         """generate text responses"""
 
         sys.stdout.write("querying model...\n")
+        sys.stdout.flush()
         try:
             chat_response = self.client.chat.complete(
                 model=self.chat_model,
@@ -52,6 +53,13 @@ class LeChat:
                     }
                 ]
             )
+
+            for chunk in chat_response:
+                if hasattr(chunk, "choices") and chunk.choices and hasattr(chunk.choices[0], "delta"):
+                    content = chunk.choices[0].delta.content
+                    if content:
+                        sys.stdout.write(content)
+                        sys.stdout.flush()
 
             return chat_response.model_dump()
         except LocalProtocolError as ex:
