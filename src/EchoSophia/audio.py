@@ -22,4 +22,5 @@ class Audio:
                 sys.stdout.write("downloaded audio successfully...\n")
         except Exception as ex:
             err = f"error downloading audio from {url}: {ex}\n"
-            raise ConnectionError(err)
+            sys.stdout.write(err)
+            sys.exit(1)

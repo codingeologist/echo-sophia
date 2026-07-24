@@ -35,7 +35,8 @@ def _transcription(in_file: str, out_file: str, chunked: bool = True):
                     err = f"error transcribing {file_path}: {ex}\n"
                     sys.stdout.write(err)
                     transcriptions[file_path] = {"error": f"{err}"}
-                    raise ConnectionError(err)
+                    sys.stdout.write(err)
+                    sys.exit(1)
     else:
         try:
             transcriptions[in_file] = lechat.transcribe_audio(in_file)
@@ -46,7 +47,8 @@ def _transcription(in_file: str, out_file: str, chunked: bool = True):
         except Exception as ex:
             err = f"error transcribing {in_file}: {ex}\n"
             transcriptions[in_file] = {"error": f"{err}"}
-            raise ConnectionError(err)
+            sys.stdout.write(f"{err}")
+            sys.exit(1)
 
     sys.stdout.write("saving file...\n")
     with open(f"{out_file}", "w", encoding="utf-8") as file:

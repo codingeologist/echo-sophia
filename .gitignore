@@ -2,3 +2,6 @@ venv
 transcripts
 __pycache__
 *.json
+*.egg-info
+*.txt
+*PKG-INFO

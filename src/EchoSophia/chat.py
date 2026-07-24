@@ -34,7 +34,8 @@ class LeChat:
             return response.model_dump()
         except Exception as ex:
             err = f"error transcribing audio: {ex}\n"
-            raise ConnectionError(err)
+            sys.stdout.write(err)
+            sys.exit(1)
 
 
     def chat_completion(self, prompt: str) -> dict:
@@ -55,4 +56,5 @@ class LeChat:
             return chat_response.model_dump()
         except LocalProtocolError as ex:
             err = f"Forgot the API KEY or model: {ex}\n"
-            raise ConnectionError(f"Forgot the API KEY or model: {err}")
+            sys.stdout.write(err)
+            sys.exit(1)
